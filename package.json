@@ -1,0 +1,25 @@
+{
+  "name": "lr-http-server",
+  "version": "0.0.1",
+  "description": "An HTTP server with livereload included",
+  "main": "src/index.js",
+  "bin": "bin/lr-http-server",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:manuelcabral/lr-http-server.git"
+  },
+  "author": "Manuel Cabral (m.cabral@digisfera.pt)",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/manuelcabral/lr-http-server/issues"
+  },
+  "dependencies": {
+    "connect": "~2.8.8",
+    "commander": "~2.0.0",
+    "gaze": "~0.4.3",
+    "tiny-lr": "0.0.5",
+    "connect-livereload": "~0.3.0"
+  }
+}

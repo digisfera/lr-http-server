@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+var simpleHttpMime = require('../src/index.js');
+var program = require('commander');
+
+function list(val) {
+  return val.split(',');
+}
+
+program
+  .option('-p, --port <portNumber>', 'Port number', parseInt)
+  .option('-d, --dir <path>', 'Directory to serve')
+  .option('-l, --livereload <portNumber>', 'Port for the livereload server. Disabled if `false`')
+  .option('-w, --watchFiles <paths>', 'Comma-separated list of glob patterns of files to watch', list)
+  .parse(process.argv);
+
+simpleHttpMime(program.port, program.dir, program.livereload, program.watchFiles);
