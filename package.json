@@ -1,6 +1,6 @@
 {
   "name": "lr-http-server",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "An HTTP server with livereload included",
   "main": "src/index.js",
   "bin": {
@@ -13,7 +13,7 @@
     "url": "git@github.com:manuelcabral/lr-http-server.git"
   },
   "author": "Manuel Cabral (m.cabral@digisfera.pt)",
-  "license": "BSD",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/manuelcabral/lr-http-server/issues"
   },
