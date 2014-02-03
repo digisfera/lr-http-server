@@ -12,7 +12,7 @@ program
   .option('-d, --dir <path>', 'Directory to serve')
   .option('-l, --livereload <portNumber>', 'Port for the livereload server. Disabled if `false`')
   .option('-w, --watchFiles <paths>', 'Comma-separated list of glob patterns of files to watch', list)
-  .option('-o, --open', 'Open a browser window with the server root')
+  .option('-b, --disableBrowserOpen', 'Disable opening a browser window on the server root')
   .parse(process.argv);
 
-simpleHttpMime(program.port, program.dir, program.livereload, program.watchFiles, program.open);
+simpleHttpMime(program.port, program.dir, program.livereload, program.watchFiles, !program.disableBrowserOpen);
