@@ -3,7 +3,10 @@
   "version": "0.0.2",
   "description": "An HTTP server with livereload included",
   "main": "src/index.js",
-  "bin": "bin/lr-http-server",
+  "bin": {
+    "lr-http-server": "bin/lr-http-server",
+    "lrhs": "bin/lr-http-server"
+  },
   "scripts": {
   },
   "repository": {
