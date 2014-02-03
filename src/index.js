@@ -1,11 +1,12 @@
-var connect = require('connect');
-var path = require('path');
-var gaze = require('gaze');
-var tinylr = require('tiny-lr');
+var connect = require('connect'),
+    path = require('path'),
+    gaze = require('gaze'),
+    open = require('open'),
+    tinylr = require('tiny-lr');
 
 
 
-module.exports = function(port, dir, livereloadPort, watchFiles) {
+module.exports = function(port, dir, livereloadPort, watchFiles, openBrowser) {
 
   port = port || 8080;
   dir = dir || '.';
@@ -63,5 +64,7 @@ module.exports = function(port, dir, livereloadPort, watchFiles) {
         .listen(port);
 
   console.log("HTTP server listening on port " + port + "\nServing " + absoluteDir);
+
+  if(openBrowser) { open("http://127.0.0.1:" + port); }
 
 };
