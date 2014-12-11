@@ -9,7 +9,7 @@ An HTTP server with livereload included. If a file inside the folder being serve
 
 ## Usage
 
-    lr-http-server [-p <port>] [-d <dir>] [-l livereloadport] [-w < watchPaths || false >]
+    lr-http-server [-p <port>] [-d <dir>] [-l livereloadport] [-w < watchPaths || false >] [-b]
 
 **port** (default *8080*): Port to listen on
 
@@ -19,6 +19,7 @@ An HTTP server with livereload included. If a file inside the folder being serve
 
 **watchPaths**: Comma-separated list of glob patterns for the files to watch. *e.g.* `**/*.js,**/*.css,**/*.html,**/*.xml`
 
+**b**: disable browser open
 
 ## Examples
 
