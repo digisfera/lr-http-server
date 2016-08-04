@@ -19,10 +19,12 @@
   },
   "dependencies": {
     "commander": "~2.0.0",
-    "connect": "~2.8.8",
-    "connect-livereload": "~0.3.0",
+    "connect": "~3.4.1",
+    "connect-livereload": "~0.5.4",
     "gaze": "^0.5.1",
     "open": "0.0.4",
+    "serve-index": "^1.8.0",
+    "serve-static": "^1.11.1",
     "tiny-lr": "0.0.5"
   }
 }

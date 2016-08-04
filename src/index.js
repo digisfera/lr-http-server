@@ -1,4 +1,6 @@
 var connect = require('connect'),
+    serveStatic = require('serve-static'),
+    serveIndex = require('serve-index'),
     path = require('path'),
     gaze = require('gaze'),
     open = require('open'),
@@ -59,8 +61,8 @@ module.exports = function(port, dir, livereloadPort, watchFiles, openBrowser) {
     });
   }
 
-  server.use(connect.static(absoluteDir))
-        .use(connect.directory(absoluteDir))
+  server.use(serveStatic(absoluteDir))
+        .use(serveIndex(absoluteDir))
         .listen(port);
 
   console.log("HTTP server listening on port " + port + "\nServing " + absoluteDir);
