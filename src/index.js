@@ -51,11 +51,12 @@ module.exports = function(port, dir, livereloadPort, watchFiles, openBrowser) {
     });
 
 
-    gaze(absoluteWatchFiles, function(err, watcher) {
+    gaze(watchFiles, function(err, watcher) {
       if(err) {
         console.error("Unable to watch files", err);
       }
       this.on('all', function(event, filepath) {
+        console.log("Watch: " + filepath + ' was ' + event);
         livereloadServer.changed({body:{files:filepath}});
       });
     });
