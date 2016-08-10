@@ -51,7 +51,7 @@ module.exports = function(port, dir, livereloadPort, watchFiles, openBrowser) {
     });
 
 
-    gaze(watchFiles, function(err, watcher) {
+    gaze(watchFiles, {cwd: absoluteDir}, function(err, watcher) {
       if(err) {
         console.error("Unable to watch files", err);
       }
