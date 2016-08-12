@@ -8,10 +8,11 @@ var connect = require('connect'),
 
 
 
-module.exports = function(port, dir, livereloadPort, watchFiles, openBrowser) {
+module.exports = function(port, dir, url, livereloadPort, watchFiles, openBrowser) {
 
   port = port || 8080;
   dir = dir || '.';
+  url = url || '';
 
   if(livereloadPort === 'false' || livereloadPort === false)
     livereloadPort = false;
@@ -30,7 +31,7 @@ module.exports = function(port, dir, livereloadPort, watchFiles, openBrowser) {
 
   var server = connect();
 
-                
+
   if(livereloadPort) {
     server.use(require('connect-livereload')({ port: livereloadPort }));
 
@@ -68,6 +69,6 @@ module.exports = function(port, dir, livereloadPort, watchFiles, openBrowser) {
 
   console.log("HTTP server listening on port " + port + "\nServing " + absoluteDir);
 
-  if(openBrowser) { open("http://127.0.0.1:" + port); }
+  if(openBrowser) { open("http://127.0.0.1:" + port + url); }
 
 };
