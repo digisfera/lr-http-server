@@ -14,6 +14,7 @@ program
   .option('-l, --livereload <portNumber>', 'Port for the livereload server. Disabled if `false`')
   .option('-w, --watchFiles <paths>', 'Comma-separated list of glob patterns of files to watch', list)
   .option('-b, --disableBrowserOpen', 'Disable opening a browser window on the server root')
+  .option('-D, --debounce-delay <n>', 'The applied delay for file watching in milliseconds, it can be used for grouping changes')
   .parse(process.argv);
 
-simpleHttpMime(program.port, program.dir, program.url, program.livereload, program.watchFiles, !program.disableBrowserOpen);
+simpleHttpMime(program.port, program.dir, program.url, program.livereload, program.watchFiles, !program.disableBrowserOpen, +program.debounceDelay);
