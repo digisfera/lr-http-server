@@ -14,6 +14,7 @@ program
   .option('-l, --livereload <portNumber>', 'Port for the livereload server. Disabled if `false`')
   .option('-w, --watchFiles <paths>', 'Comma-separated list of glob patterns of files to watch', list)
   .option('-b, --disableBrowserOpen', 'Disable opening a browser window on the server root')
+  .option('-e, --extensions <exts>', 'Comma-separeted list of extensions which will be added to file name if the file not found (think like /foo -> /foo.html)', list)
   .parse(process.argv);
 
-simpleHttpMime(program.port, program.dir, program.url, program.livereload, program.watchFiles, !program.disableBrowserOpen);
+simpleHttpMime(program.port, program.dir, program.url, program.livereload, program.watchFiles, !program.disableBrowserOpen, program.extensions);

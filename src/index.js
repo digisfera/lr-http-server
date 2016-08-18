@@ -8,7 +8,7 @@ var connect = require('connect'),
 
 
 
-module.exports = function(port, dir, url, livereloadPort, watchFiles, openBrowser) {
+module.exports = function(port, dir, url, livereloadPort, watchFiles, openBrowser, extensions) {
 
   port = port || 8080;
   dir = dir || '.';
@@ -21,6 +21,7 @@ module.exports = function(port, dir, url, livereloadPort, watchFiles, openBrowse
 
   watchFiles = watchFiles || [ '**/*.html', '**/*.js', '**/*.css', '**/*.xml' ];
 
+  extensions = extensions.length ? extensions : false;
 
   absoluteDir = path.resolve(dir);
 
@@ -63,7 +64,7 @@ module.exports = function(port, dir, url, livereloadPort, watchFiles, openBrowse
     });
   }
 
-  server.use(serveStatic(absoluteDir))
+  server.use(serveStatic(absoluteDir, { extensions: extensions }))
         .use(serveIndex(absoluteDir))
         .listen(port);
 
