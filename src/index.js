@@ -21,7 +21,7 @@ module.exports = function(port, dir, url, livereloadPort, watchFiles, openBrowse
 
   watchFiles = watchFiles || [ '**/*.html', '**/*.js', '**/*.css', '**/*.xml' ];
 
-  extensions = extensions.length ? extensions : false;
+  extensions = extensions.length > 0 ? extensions : false;
 
   absoluteDir = path.resolve(dir);
 
