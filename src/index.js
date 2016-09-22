@@ -4,11 +4,11 @@ var connect = require('connect'),
     path = require('path'),
     gaze = require('gaze'),
     open = require('open'),
-    tinylr = require('tiny-lr');
+    tinylr = require('tiny-lr'),
+    debounce = require('lodash.debounce');
 
 
-
-module.exports = function(port, dir, url, livereloadPort, watchFiles, openBrowser, extensions) {
+module.exports = function(port, dir, url, livereloadPort, watchFiles, openBrowser, extensions, debounceDelay) {
 
   port = port || 8080;
   dir = dir || '.';
@@ -21,7 +21,7 @@ module.exports = function(port, dir, url, livereloadPort, watchFiles, openBrowse
 
   watchFiles = watchFiles || [ '**/*.html', '**/*.js', '**/*.css', '**/*.xml' ];
 
-  extensions = extensions.length > 0 ? extensions : false;
+  extensions = (extensions && extensions.length > 0) ? extensions : false;
 
   absoluteDir = path.resolve(dir);
 
@@ -52,14 +52,20 @@ module.exports = function(port, dir, url, livereloadPort, watchFiles, openBrowse
       }
     });
 
-
     gaze(watchFiles, {cwd: absoluteDir}, function(err, watcher) {
       if(err) {
         console.error("Unable to watch files", err);
       }
+      var files = [];
+      var changed = debounce(function() {
+        console.log("Sending changes:\n\t%s", files.join("\n\t"));
+        livereloadServer.changed({body:{files:files}});
+        files = [];
+      }, debounceDelay);
       this.on('all', function(event, filepath) {
         console.log("Watch: " + filepath + ' was ' + event);
-        livereloadServer.changed({body:{files:filepath}});
+        files.push(filepath);
+        changed();
       });
     });
   }

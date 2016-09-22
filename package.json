@@ -22,6 +22,7 @@
     "connect": "^3.4.1",
     "connect-livereload": "^0.5.4",
     "gaze": "^1.1.0",
+    "lodash.debounce": "^4.0.8",
     "open": "0.0.5",
     "serve-index": "^1.8.0",
     "serve-static": "^1.11.1",
