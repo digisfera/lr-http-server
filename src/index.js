@@ -59,7 +59,7 @@ module.exports = function(port, dir, url, livereloadPort, watchFiles, openBrowse
       var changed = debounce(function() {
         console.log("Sending changes:\n\t%s", files.join("\n\t"));
         livereloadServer.changed({body:{files:files}});
-        files.length = 0;
+        files = [];
       }, debounceDelay);
       this.on('all', function(event, filepath) {
         console.log("Watch: " + filepath + ' was ' + event);
