@@ -23,7 +23,7 @@
     "connect-livereload": "^0.6.1",
     "gaze": "^1.1.0",
     "lodash.debounce": "^4.0.8",
-    "open": "^8.0.9",
+    "open": "^8.2.0",
     "serve-index": "^1.8.0",
     "serve-static": "^1.11.1",
     "tiny-lr": "^2.0.0"
