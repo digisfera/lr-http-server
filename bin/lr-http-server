@@ -36,13 +36,15 @@ program
   )
   .parse(process.argv);
 
+const options = program.opts();
+
 simpleHttpMime(
-  program.port,
-  program.dir,
-  program.url,
-  program.livereload,
-  program.watchFiles,
-  !program.disableBrowserOpen,
-  program.extensions,
-  program.debounceDelay
+  options.port,
+  options.dir,
+  options.url,
+  options.livereload,
+  options.watchFiles,
+  !options.disableBrowserOpen,
+  options.extensions,
+  options.debounceDelay
 );
