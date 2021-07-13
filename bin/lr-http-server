@@ -1,21 +1,50 @@
 #!/usr/bin/env node
 
-var simpleHttpMime = require('../src/index.js');
-var program = require('commander');
+const simpleHttpMime = require("../src/index.js");
+const program = require("commander");
 
 function list(val) {
-  return val.split(',');
+  return val.split(",");
 }
 
 program
-  .option('-p, --port <portNumber>', 'Port number', parseInt)
-  .option('-d, --dir <path>', 'Directory to serve')
-  .option('-u, --url <path>', 'Url to opening file')
-  .option('-l, --livereload <portNumber>', 'Port for the livereload server. Disabled if `false`')
-  .option('-w, --watchFiles <paths>', 'Comma-separated list of glob patterns of files to watch', list)
-  .option('-b, --disableBrowserOpen', 'Disable opening a browser window on the server root')
-  .option('-e, --extensions <exts>', 'Comma-separated list of extensions which will be added to file name if the file not found (think like /foo -> /foo.html)', list)
-  .option('-D, --debounce-delay <n>', 'The applied delay for file watching in milliseconds, it can be used for grouping changes', parseFloat)
+  .option("-p, --port <portNumber>", "Port number", parseInt)
+  .option("-d, --dir <path>", "Directory to serve")
+  .option("-u, --url <path>", "Url to opening file")
+  .option(
+    "-l, --livereload <portNumber>",
+    "Port for the livereload server. Disabled if `false`"
+  )
+  .option(
+    "-w, --watchFiles <paths>",
+    "Comma-separated list of glob patterns of files to watch",
+    list
+  )
+  .option(
+    "-b, --disableBrowserOpen",
+    "Disable opening a browser window on the server root"
+  )
+  .option(
+    "-e, --extensions <exts>",
+    "Comma-separated list of extensions which will be added to file name if the file not found (think like /foo -> /foo.html)",
+    list
+  )
+  .option(
+    "-D, --debounce-delay <n>",
+    "The applied delay for file watching in milliseconds, it can be used for grouping changes",
+    parseFloat
+  )
   .parse(process.argv);
 
-simpleHttpMime(program.port, program.dir, program.url, program.livereload, program.watchFiles, !program.disableBrowserOpen, program.extensions, program.debounceDelay);
+const options = program.opts();
+
+simpleHttpMime(
+  options.port,
+  options.dir,
+  options.url,
+  options.livereload,
+  options.watchFiles,
+  !options.disableBrowserOpen,
+  options.extensions,
+  options.debounceDelay
+);
