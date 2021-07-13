@@ -1,8 +1,12 @@
 {
   "name": "lr-http-server",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "description": "An HTTP server with livereload included",
   "main": "src/index.js",
+  "files": [
+    "bin/**/*",
+    "src/**/*"
+  ],
   "bin": {
     "lr-http-server": "bin/lr-http-server",
     "lrhs": "bin/lr-http-server"
@@ -18,12 +22,12 @@
     "url": "https://github.com/digisfera/lr-http-server/issues"
   },
   "dependencies": {
-    "commander": "^7.2.0",
+    "commander": "^8.0.0",
     "connect": "^3.4.1",
     "connect-livereload": "^0.6.1",
     "gaze": "^1.1.0",
     "lodash.debounce": "^4.0.8",
-    "open": "^8.2.0",
+    "open": "^8.2.1",
     "serve-index": "^1.8.0",
     "serve-static": "^1.11.1",
     "tiny-lr": "^2.0.0"
